@@ -97,7 +97,7 @@
             </td>
         </tr>
         <tr>
-            <form action="datosVideoclub.jsp" method="post">
+            <form action="totalGastado.jsp" method="post">
                 <td>
                     <label for="videoClub1">Video club</label>
                     <select name="videoClub1" id="videoClub1">
@@ -114,6 +114,13 @@
                     <label for="cliente1">Cliente</label>
                     <select name="cliente1" id="cliente1">
                         <option value="0">-------------------------</option>
+                        <%
+                            for(int i=0;i<listaClientes.size();i++){
+                                Customer cliente=listaClientes.get(i);
+                            
+                        %>
+                            <option value="<%=cliente.getCustomerId() %>"><%=cliente.getFirstName() %> <%=cliente.getLastName() %></option>
+                        <%}%>
                     </select>
                 </td>
                 <td>

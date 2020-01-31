@@ -49,4 +49,13 @@ public class Ayudante {
         lista=(List<Rental>)q.list();
         return lista;
     }
+    
+    public List<Payment> getTotalGastado(int idVideoClub, int idCliente, String mesDesde, String mesHasta){
+        List<Payment>lista=new ArrayList<>();
+        
+        Query q = session.createQuery("from Payment as pagos where pagos.customer = "+idCliente+" and pagos.paymentDate BETWEEN \""+mesDesde+"\" and \""+mesHasta+"\" and pagos.staff in (select empleado.staffId from Staff as empleado where empleado.store="+idVideoClub+" )");
+
+        lista=(List<Payment>)q.list();
+        return lista;
+    }
 }

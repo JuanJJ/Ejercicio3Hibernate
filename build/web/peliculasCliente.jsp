@@ -31,10 +31,7 @@
             /*border: 1px solid black;*/
 
         }
-        h4{
-            background-color: cornflowerblue;
-            color: white;
-        }
+
     </style>
 
 </head>
