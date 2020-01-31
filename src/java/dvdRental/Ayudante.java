@@ -31,4 +31,22 @@ public class Ayudante {
         lista=(List<Store>)q.list();
         return lista;
     }
+    
+    public List<Customer> getListaClientes(){
+        List<Customer>lista=new ArrayList<>();
+        
+        Query q = session.createQuery("from Customer");
+        lista=(List<Customer>)q.list();
+        return lista;
+    }
+    
+    public List<Rental> getPeliculasAlquiladas(int idVideoClub, int idCliente, int tramo){
+        List<Rental>lista=new ArrayList<>();
+        
+        Query q = session.createQuery("from Rental as rental where rental.customer = "+idCliente+" and rental.inventory in (select inventario.inventoryId from Inventory as inventario where inventario.store = "+idVideoClub+")");
+        q.setFirstResult(tramo);
+        q.setMaxResults(10);
+        lista=(List<Rental>)q.list();
+        return lista;
+    }
 }

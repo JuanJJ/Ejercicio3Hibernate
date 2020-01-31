@@ -4,6 +4,7 @@
     Author     : Alumno_2DAW
 --%>
 
+<%@page import="dvdRental.Customer"%>
 <%@page import="java.util.List"%>
 <%@page import="dvdRental.Store"%>
 <%@page import="dvdRental.Ayudante"%>
@@ -41,6 +42,7 @@
     <%
         Ayudante ayudante=new Ayudante();
         List<Store>listaVideoclub=ayudante.getListaVideoclub();
+        List<Customer>listaClientes=ayudante.getListaClientes();
     %>
     <table>
         <tr>
@@ -56,7 +58,7 @@
             </td>
         </tr>
         <tr>
-            <form action="datosVideoclub.jsp" method="post">
+            <form action="peliculasCliente.jsp?tramo=1" method="post">
                 <td>
                     <label for="videoClub">Video club</label>
                     <select name="videoClub" id="videoClub">
@@ -74,6 +76,13 @@
                     <label for="cliente">Cliente</label>
                     <select name="cliente" id="cliente">
                         <option value="0">-------------------------</option>
+                        <%
+                            for(int i=0;i<listaClientes.size();i++){
+                                Customer cliente=listaClientes.get(i);
+                            
+                        %>
+                            <option value="<%=cliente.getCustomerId() %>"><%=cliente.getFirstName() %> <%=cliente.getLastName() %></option>
+                        <%}%>
                     </select>
                 </td>
                 <td>
@@ -93,6 +102,13 @@
                     <label for="videoClub1">Video club</label>
                     <select name="videoClub1" id="videoClub1">
                         <option value="0">-------------------------</option>
+                        <%
+                            for(int i=0;i<listaVideoclub.size();i++){
+                                Store videoclub=listaVideoclub.get(i);
+                            
+                        %>
+                            <option value="<%=videoclub.getStoreId() %>"><%=videoclub.getNombre() %></option>
+                        <%}%>
                     </select>
                     <br>
                     <label for="cliente1">Cliente</label>
@@ -104,11 +120,19 @@
                     <label for="mesDesde">Mes desde</label>
                     <select name="mesDesde" id="mesDesde">
                         <option value="0">-------------------------</option>
+                        <option value="2005-05-01">Mayo 2005</option>
+                        <option value="2005-06-01">Junio 2005</option>
+                        <option value="2005-07-01">Julio 2005</option>
+                        <option value="2005-08-01">Agosto 2005</option>
                     </select>
                     <br>
                     <label for="mesHasta">Mes hasta</label>
                     <select name="mesHasta" id="mesHasta">
                         <option value="0">-------------------------</option>
+                        <option value="2005-05-31">Mayo 2005</option>
+                        <option value="2005-06-30">Junio 2005</option>
+                        <option value="2005-07-31">Julio 2005</option>
+                        <option value="2005-08-31">Agosto 2005</option>
                     </select>
                 </td>
                 <td>
@@ -129,6 +153,13 @@
                     <label for="videoClub2">Video club</label>
                     <select name="videoClub2" id="videoClub2">
                         <option value="0">-------------------------</option>
+                        <%
+                            for(int i=0;i<listaVideoclub.size();i++){
+                                Store videoclub=listaVideoclub.get(i);
+                            
+                        %>
+                            <option value="<%=videoclub.getStoreId() %>"><%=videoclub.getNombre() %></option>
+                        <%}%>
                     </select>
                 </td>
 
@@ -149,6 +180,13 @@
                     <label for="videoClub3">Video club</label>
                     <select name="videoClub3" id="videoClub3">
                         <option value="0">-------------------------</option>
+                        <%
+                            for(int i=0;i<listaVideoclub.size();i++){
+                                Store videoclub=listaVideoclub.get(i);
+                            
+                        %>
+                            <option value="<%=videoclub.getStoreId() %>"><%=videoclub.getNombre() %></option>
+                        <%}%>
                     </select>
                 </td>
 
