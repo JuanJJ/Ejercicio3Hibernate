@@ -155,7 +155,7 @@
             </td>
         </tr>
         <tr>
-            <form action="datosVideoclub.jsp" method="post">
+            <form action="totalGastadoVideoclub.jsp?tramo=1" method="post">
                 <td colspan="2">
                     <label for="videoClub2">Video club</label>
                     <select name="videoClub2" id="videoClub2">

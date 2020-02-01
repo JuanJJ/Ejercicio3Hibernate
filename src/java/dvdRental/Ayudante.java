@@ -58,4 +58,14 @@ public class Ayudante {
         lista=(List<Payment>)q.list();
         return lista;
     }
+    
+    public List<Object[]> getTotalGastadoVideoclub(int idVideoClub, int tramo){
+        List<Object[]>lista=new ArrayList<>();
+        
+        Query q = session.createQuery("select sum(pagos.amount), pagos.customer.firstName,pagos.customer.lastName from Payment as pagos where pagos.staff in (select empleado.staffId from Staff as empleado where empleado.store="+idVideoClub+" ) group by pagos.customer");
+        q.setFirstResult(tramo);
+        q.setMaxResults(10);
+        lista=(List<Object[]>)q.list();
+        return lista;
+    }
 }
