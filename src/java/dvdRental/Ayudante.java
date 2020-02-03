@@ -68,4 +68,42 @@ public class Ayudante {
         lista=(List<Object[]>)q.list();
         return lista;
     }
+    
+    public List<Object[]> getVecesAlquiladas(int idVideoClub, int tramo){
+        List<Object[]>lista=new ArrayList<>();
+        
+        Query q = session.createQuery("select film.title, count(rental.inventory) from Rental as rental, Inventory as inventario, Film as film where(rental.inventory=inventario.inventoryId) and (inventario.film=film.filmId) and inventario.store="+idVideoClub+" group by inventario.film");
+        q.setFirstResult(tramo);
+        q.setMaxResults(10);
+        lista=(List<Object[]>)q.list();
+        return lista;
+    }
+    
+    public List<Film> getPeliculas(){
+        List<Film>lista=new ArrayList<>();
+        
+        Query q = session.createQuery("from Film");
+
+        lista=(List<Film>)q.list();
+        return lista;
+    }
+    
+    public List<FilmActor> getActores(int idPelicula){
+        List<FilmActor>lista=new ArrayList<>();
+        
+        Query q = session.createQuery("from FilmActor as actores where actores.film="+idPelicula);
+
+        lista=(List<FilmActor>)q.list();
+        return lista;
+    }
+    
+    public Film getPelicula(int idPelicula){
+        
+        
+        Query q = session.createQuery("from Film as pelicula where pelicula.filmId="+idPelicula);
+
+        Film pelicula=(Film)q.uniqueResult();
+        return pelicula;
+    }
+    
 }

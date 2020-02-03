@@ -240,7 +240,7 @@ public final class inicio_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            </td>\r\n");
       out.write("        </tr>\r\n");
       out.write("        <tr>\r\n");
-      out.write("            <form action=\"totalGastadoVideoclub.jsp\" method=\"post\">\r\n");
+      out.write("            <form action=\"totalGastadoVideoclub.jsp?tramo=1\" method=\"post\">\r\n");
       out.write("                <td colspan=\"2\">\r\n");
       out.write("                    <label for=\"videoClub2\">Video club</label>\r\n");
       out.write("                    <select name=\"videoClub2\" id=\"videoClub2\">\r\n");

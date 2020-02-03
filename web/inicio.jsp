@@ -4,6 +4,7 @@
     Author     : Alumno_2DAW
 --%>
 
+<%@page import="dvdRental.Film"%>
 <%@page import="dvdRental.Customer"%>
 <%@page import="java.util.List"%>
 <%@page import="dvdRental.Store"%>
@@ -58,7 +59,7 @@
             </td>
         </tr>
         <tr>
-            <form action="peliculasCliente.jsp?tramo=1" method="post">
+            <form action="peliculasCliente.jsp?tramo=0" method="post">
                 <td>
                     <label for="videoClub">Video club</label>
                     <select name="videoClub" id="videoClub">
@@ -155,7 +156,7 @@
             </td>
         </tr>
         <tr>
-            <form action="totalGastadoVideoclub.jsp?tramo=1" method="post">
+            <form action="totalGastadoVideoclub.jsp?tramo=0" method="post">
                 <td colspan="2">
                     <label for="videoClub2">Video club</label>
                     <select name="videoClub2" id="videoClub2">
@@ -182,7 +183,7 @@
             </td>
         </tr>
         <tr>
-            <form action="datosVideoclub.jsp" method="post">
+            <form action="vecesAlquiladas.jsp?tramo=0" method="post">
                 <td colspan="2">
                     <label for="videoClub3">Video club</label>
                     <select name="videoClub3" id="videoClub3">
@@ -209,11 +210,20 @@
             </td>
         </tr>
         <tr>
-            <form action="datosVideoclub.jsp" method="post">
+            <%
+                List<Film>listaPeliculas=ayudante.getPeliculas();
+            %>
+            <form action="actores.jsp" method="post">
                 <td colspan="2">
                     <label for="pelicula">Pelicula</label>
                     <select name="pelicula" id="pelicula">
                         <option value="0">-------------------------</option>
+                        <%
+                            for(int i=0;i<listaPeliculas.size();i++){
+                                Film pelicula=listaPeliculas.get(i);
+                        %>
+                        <option value="<%=pelicula.getFilmId() %>"><%=pelicula.getTitle() %></option>
+                        <%}%>
                     </select>
                 </td>
 
