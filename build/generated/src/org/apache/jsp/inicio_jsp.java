@@ -3,6 +3,7 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import dvdRental.Film;
 import dvdRental.Customer;
 import java.util.List;
 import dvdRental.Store;
@@ -45,6 +46,7 @@ public final class inicio_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
@@ -103,7 +105,7 @@ public final class inicio_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            </td>\r\n");
       out.write("        </tr>\r\n");
       out.write("        <tr>\r\n");
-      out.write("            <form action=\"peliculasCliente.jsp?tramo=1\" method=\"post\">\r\n");
+      out.write("            <form action=\"peliculasCliente.jsp?tramo=0\" method=\"post\">\r\n");
       out.write("                <td>\r\n");
       out.write("                    <label for=\"videoClub\">Video club</label>\r\n");
       out.write("                    <select name=\"videoClub\" id=\"videoClub\">\r\n");
@@ -240,7 +242,7 @@ public final class inicio_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            </td>\r\n");
       out.write("        </tr>\r\n");
       out.write("        <tr>\r\n");
-      out.write("            <form action=\"totalGastadoVideoclub.jsp?tramo=1\" method=\"post\">\r\n");
+      out.write("            <form action=\"totalGastadoVideoclub.jsp?tramo=0\" method=\"post\">\r\n");
       out.write("                <td colspan=\"2\">\r\n");
       out.write("                    <label for=\"videoClub2\">Video club</label>\r\n");
       out.write("                    <select name=\"videoClub2\" id=\"videoClub2\">\r\n");
@@ -276,7 +278,7 @@ public final class inicio_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            </td>\r\n");
       out.write("        </tr>\r\n");
       out.write("        <tr>\r\n");
-      out.write("            <form action=\"datosVideoclub.jsp\" method=\"post\">\r\n");
+      out.write("            <form action=\"vecesAlquiladas.jsp?tramo=0\" method=\"post\">\r\n");
       out.write("                <td colspan=\"2\">\r\n");
       out.write("                    <label for=\"videoClub3\">Video club</label>\r\n");
       out.write("                    <select name=\"videoClub3\" id=\"videoClub3\">\r\n");
@@ -312,11 +314,31 @@ public final class inicio_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            </td>\r\n");
       out.write("        </tr>\r\n");
       out.write("        <tr>\r\n");
-      out.write("            <form action=\"datosVideoclub.jsp\" method=\"post\">\r\n");
+      out.write("            ");
+
+                List<Film>listaPeliculas=ayudante.getPeliculas();
+            
+      out.write("\r\n");
+      out.write("            <form action=\"actores.jsp\" method=\"post\">\r\n");
       out.write("                <td colspan=\"2\">\r\n");
       out.write("                    <label for=\"pelicula\">Pelicula</label>\r\n");
       out.write("                    <select name=\"pelicula\" id=\"pelicula\">\r\n");
       out.write("                        <option value=\"0\">-------------------------</option>\r\n");
+      out.write("                        ");
+
+                            for(int i=0;i<listaPeliculas.size();i++){
+                                Film pelicula=listaPeliculas.get(i);
+                        
+      out.write("\r\n");
+      out.write("                        <option value=\"");
+      out.print(pelicula.getFilmId() );
+      out.write('"');
+      out.write('>');
+      out.print(pelicula.getTitle() );
+      out.write("</option>\r\n");
+      out.write("                        ");
+}
+      out.write("\r\n");
       out.write("                    </select>\r\n");
       out.write("                </td>\r\n");
       out.write("\r\n");

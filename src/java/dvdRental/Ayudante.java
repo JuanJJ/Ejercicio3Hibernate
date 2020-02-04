@@ -72,7 +72,7 @@ public class Ayudante {
     public List<Object[]> getVecesAlquiladas(int idVideoClub, int tramo){
         List<Object[]>lista=new ArrayList<>();
         
-        Query q = session.createQuery("select film.title, count(rental.inventory) from Rental as rental, Inventory as inventario, Film as film where(rental.inventory=inventario.inventoryId) and (inventario.film=film.filmId) and inventario.store="+idVideoClub+" group by inventario.film");
+        Query q = session.createQuery("SELECT rental.inventory.film.title, count(rental.inventory) FROM Rental as rental WHERE rental.inventory.store = "+idVideoClub+" GROUP BY rental.inventory.film");
         q.setFirstResult(tramo);
         q.setMaxResults(10);
         lista=(List<Object[]>)q.list();
